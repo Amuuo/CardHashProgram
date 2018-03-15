@@ -167,12 +167,6 @@ void Set::addCard(Card* newCard)
             arrayPtr->getNextPtr()->setPrevPtr(arrayPtr);
             arrayPtr->getNextPtr()->setNextPtr(nullptr);
       }
-      else
-      {
-            std::cout << "\ndeleting..."; 
-            newCard->printCard();
-            newCard;
-      }
       return;
 }
 
