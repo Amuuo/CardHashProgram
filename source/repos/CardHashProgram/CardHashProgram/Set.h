@@ -15,5 +15,8 @@ public:
 	std::string  getFileName();
 	void         setFileName(std::string);
 	void         printHash(std::string);
+      bool         checkDup(Card* tmpHead, Card* newCard);
 	void         addCard(Card*);
+      Card*        findLast(Card* tmpHead);
+
 };

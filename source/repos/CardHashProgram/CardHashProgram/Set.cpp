@@ -15,6 +15,12 @@ GETTERS
 Card* Set::getHashTable(int i) const { return hashTable[i]; }
 void  Set::setFileName(std::string file) { fileName = file; }
 /*
+/*
+=================================================================
+OPERATOR OVERLOADS
+=================================================================
+*/
+/*
 =================================================================
 FUNCTION.   : bucketEnd
 PARAMETERS  : CARD POINTER (tail bucket link)
@@ -105,53 +111,68 @@ hashTable for first available slot at the index
 corresponding to hashFunction
 =================================================================
 */
+bool Set::checkDup(Card* tmpHead, Card* newCard)
+{
+      if       (tmpHead == nullptr) return false;
+      else if  (*tmpHead == newCard) return true ;
+      else     return checkDup(tmpHead->getNextPtr(), newCard);
+      /*while (tmpHead != nullptr)
+      {
+            if (tmpHead == newCard) return true;
+            tmpHead->setNextPtr(tmpHead->getNextPtr());
+      }
+      return false;*/
+     
+}
+/*
+=================================================================
+FUNCTION.   : addCard
+PARAMETERS  : CARD POINTER
+RETURN TYPE : VOID
+DESCRIPTION : takes a newly created card pointer and probes Set
+hashTable for first available slot at the index
+corresponding to hashFunction
+=================================================================
+*/
+Card* Set::findLast(Card* tmpHead)
+{
+
+      if (tmpHead->getNextPtr() == nullptr) return tmpHead;
+      return findLast(tmpHead->getNextPtr());
+}
+/*
+=================================================================
+FUNCTION.   : addCard
+PARAMETERS  : CARD POINTER
+RETURN TYPE : VOID
+DESCRIPTION : takes a newly created card pointer and probes Set
+hashTable for first available slot at the index
+corresponding to hashFunction
+=================================================================
+*/
 void Set::addCard(Card* newCard)
 {
-	int   hashValue = hashFunction(newCard->getKey());
-	Card* arrayPtr = hashTable[hashValue];
+	int hashValue = hashFunction(newCard->getKey());
 
-
-	std::cout << "\n\n\t> Attempting to insert "; newCard->printCard(); std::cout << "at [" << hashValue << "]:";
-
-	if (arrayPtr == nullptr)
-	{
-		std::cout << "\n\t> hash slot is empty... ";
-		hashTable[hashValue] = new Card(newCard);
-		arrayPtr = hashTable[hashValue];
-		std::cout << "\n\t    ==========================================================";
-		std::cout << "\n\t    || UPDATED: hashTable[" << hashValue << "] -> " << bucketFront(arrayPtr);
-		std::cout << "\n\t    ==========================================================";
-		return;
-	}
-	std::cout << "\n\t> hashTable[" << hashValue << "] -> " << bucketFront(arrayPtr);
-
-	while (arrayPtr != nullptr)
-	{
-		if (*arrayPtr == newCard)
-		{
-			std::cout << "\n     \n\t\tduplicate detected, deleting new card...("; arrayPtr->printCard(); std::cout << ")";
-			std::cout << "\n\t       -----------------------------------------------------------";
-			newCard->eraseCard();
-			return;
-		}
-		else if (arrayPtr->getNextPtr() == nullptr)
-		{
-			std::cout << "\n\t> linking "; newCard->printCard();
-			std::cout << "to "; arrayPtr->printCard();
-			Card* arrayPtrNext = arrayPtr->getNextPtr();
-
-			arrayPtrNext = new Card(newCard);
-			arrayPtr->setNextPtr(arrayPtrNext);
-			arrayPtrNext->setPrevPtr(arrayPtr);
-			arrayPtrNext->setNextPtr(nullptr);
-			std::cout << "\n\t    ==========================================================";
-			std::cout << "\n\t    || UPDATED: hashTable[" << hashValue << "]: " << bucketEnd(arrayPtrNext);
-			std::cout << "\n\t    ==========================================================";
-			return;
-		}
-		else if (arrayPtr->getNextPtr() != nullptr)
-		{
-			arrayPtr = arrayPtr->getNextPtr();
-		}
-	}
+      if (hashTable[hashValue] == nullptr)
+      {
+            hashTable[hashValue] = new Card(*newCard);
+            hashTable[hashValue]->setPrevPtr(nullptr);
+            hashTable[hashValue]->setNextPtr(nullptr);
+      }
+      else if (!checkDup(hashTable[hashValue], newCard))
+      {
+            Card* arrayPtr = findLast(hashTable[hashValue]);   
+            arrayPtr->setNextPtr(new Card(*newCard));
+            arrayPtr->getNextPtr()->setPrevPtr(arrayPtr);
+            arrayPtr->getNextPtr()->setNextPtr(nullptr);
+      }
+      else
+      {
+            std::cout << "\ndeleting..."; 
+            newCard->printCard();
+            newCard;
+      }
+      return;
 }
+

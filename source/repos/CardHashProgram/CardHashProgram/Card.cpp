@@ -7,7 +7,7 @@ Card::Card(std::string(face), std::string(suit)) : nextCard(nullptr), prevCard(n
 COPY CONSTRUCTORS
 =================================================================
 */
-Card::Card(Card& c1) : face(c1.getFace()), suit(c1.getSuit()), nextCard(nullptr), prevCard(nullptr) {}
+Card::Card(Card& c1) : face(c1.getFace()),  suit(c1.getSuit()),  nextCard(nullptr), prevCard(nullptr) {}
 Card::Card(Card* c1) : face(c1->getFace()), suit(c1->getSuit()), nextCard(nullptr), prevCard(nullptr) {}
 /*
 =================================================================
@@ -44,8 +44,8 @@ GETTERS
 */
 std::string Card::getFace()    const { return face;     }
 std::string Card::getSuit()    const { return suit;     }
-Card*       Card::getNextPtr() const { return nextCard; }
-Card*       Card::getPrevPtr() const { return prevCard; }
+Card*       Card::getNextPtr()       { return nextCard; }
+Card*       Card::getPrevPtr()       { return prevCard; }
 /*
 =================================================================
 SETTERS

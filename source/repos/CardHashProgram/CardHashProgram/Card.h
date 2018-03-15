@@ -19,8 +19,8 @@ public:
 	bool          operator==(Card*);
 	Card*         operator=(Card*);
 	Card          operator=(Card&);
-	Card*         getNextPtr()const;
-	Card*         getPrevPtr()const;
+	Card*         getNextPtr();
+	Card*         getPrevPtr();
 	std::string   getFace()const;
 	std::string   getSuit()const;
 	void          printCard()const;

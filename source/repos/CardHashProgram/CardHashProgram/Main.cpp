@@ -200,7 +200,7 @@ void setImport(std::vector<Set>& cardSet)
 	const char*               systemCall;
 	int                       fileStringInput;
 	int                       i = 1;
-	int		                  initialSize = cardSet.size();
+	int		              initialSize = cardSet.size();
 	Set*                      tmpSet = new Set;
 
 
@@ -246,16 +246,14 @@ void setImport(std::vector<Set>& cardSet)
 		while (!deckInputFile.eof())
 		{
 			deckInputFile >> face >> suit;
-			std::cout << "face: " << face << std::endl;
-			std::cout << "suit: " << suit << std::endl;
 			Card* tempCard = new Card;
 
 			tempCard->setFace(face);
 			tempCard->setSuit(suit);
-			tempCard->printCard();
 
 			cardSet[i].addCard(tempCard);
-			std::cout << "\nCard added";
+			std::cout << "\nCard added: ";
+			tempCard->printCard();
 		}
 		std::cout << "\n\n...Closing Deck file" << i + 1 << std::endl;
 		deckInputFile.close();
@@ -362,7 +360,7 @@ void printSetList(std::vector<Set>& cardSet)
 	const char*               systemCall;
 
 	//find set files in the current directory and output to setList.txt
-	systemCall = "dir | gawk '/[ ][(Set)*].*/.(txt)$/ | gawk '{ print $5 }' > setList.txt";
+	systemCall = "dir | gawk '/[ ][(Set)*].*(txt)$/' | gawk '{ print $5 }' > setList.txt";
 	system(systemCall);
 
 	loadArtwork("PrintSet.txt");
