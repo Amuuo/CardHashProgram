@@ -1,3 +1,4 @@
+#pragma once
 #include"Main.h"
 
 Card::Card() : face(), suit(), nextCard(nullptr), prevCard(nullptr) {}

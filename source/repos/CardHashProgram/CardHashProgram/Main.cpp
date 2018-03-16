@@ -1,5 +1,11 @@
 #include"Main.h"
 
+
+/*
+          ___
+|\/|  /\   |  |\ |
+|  | /--\ _|_ | \|
+*/
 int main()
 {
 	std::vector<Set>    cardSet;
@@ -25,13 +31,13 @@ int main()
 }
 
 /*
-=================================================================
-FUNCTION.   : getFileContents
-PARAMETERS  : ifstream
-RETURN TYPE : std::string
-DESCRIPTION : read file and convert it's contents to a single
-std::string, then return that std::string
-=================================================================
+
+            _          _
+ _   _ _|_ |_ o |  _  /   _  ._ _|_  _  ._ _|_  _
+(_| (/_ |_ |  | | (/_ \_ (_) | | |_ (/_ | | |_ _>
+_|
+      DESCRIPTION : read file and convert it's contents to a single
+      std::string, then return that std::string
 */
 std::string getFileContents(std::ifstream& File)
 {
@@ -51,14 +57,14 @@ std::string getFileContents(std::ifstream& File)
 }
 
 /*
-=================================================================
-FUNCTION.   : addNumberGraphic
-PARAMETERS  : std::string, std::string
-RETURN TYPE : std::string header, std::string num
-DESCRIPTION : concatenate header graphic with number graphic
-to display various graphics headers (e.g. "Set1",
-"Set2", "Set3")
-=================================================================
+
+                                       __
+ _.  _|  _| |\ |     ._ _  |_   _  ._ /__ ._ _. ._  |_  o  _
+(_| (_| (_| | \| |_| | | | |_) (/_ |  \_| | (_| |_) | | | (_
+                                                |
+      DESCRIPTION : concatenate header graphic with number graphic
+      to display various graphics headers (e.g. "Set1",
+      "Set2", "Set3")
 */
 std::string addNumberGraphic(std::string header, std::string num)
 {
@@ -110,12 +116,11 @@ std::string addNumberGraphic(std::string header, std::string num)
 	return Lines;
 }
 /*
-=================================================================
-FUNCTION.   : titleScreen
-PARAMETERS  : n/a
-RETURN TYPE : int
-DESCRIPTION : load Menu graphic and return user-entered menu option
-=================================================================
+                 __
+_|_ o _|_ |  _  (_   _ ._ _   _  ._
+ |_ |  |_ | (/_ __) (_ | (/_ (/_ | |
+
+      DESCRIPTION : load Menu graphic and return user-entered menu option
 */
 int titleScreen()
 {
@@ -123,13 +128,11 @@ int titleScreen()
 	return (_getch() - 48);
 }
 /*
-=================================================================
-FUNCTION.   : Union
-PARAMETERS  : Set1, Set2
-RETURN TYPE : VOID
-DESCRIPTION : calculates the union between two sets and places
-the result in a new set
-=================================================================
+ _  _ _|_ | | ._  o  _  ._
+_> (/_ |_ |_| | | | (_) | |
+
+      DESCRIPTION : calculates the union between two sets and places
+      the result in a new set
 */
 void setUnion(std::vector<Set>& cardSet)
 {
@@ -177,14 +180,14 @@ void setUnion(std::vector<Set>& cardSet)
 	} newSet->printHash("Graphics\\Set.txt");
 }
 /*
-=================================================================
-FUNCTION.   : setImport
-PARAMETERS  : vector<Set>
-RETURN TYPE : VOID
-DESCRIPTION : get list of available "hand.txt" files from current
-directory, display to user, capture user-input,
-and load files into program
-=================================================================
+          ___
+ _  _ _|_  |  ._ _  ._   _  ._ _|_
+_> (/_ |_ _|_ | | | |_) (_) |   |_
+                    |
+
+      DESCRIPTION : get list of available "hand.txt" files from current
+      directory, display to user, capture user-input,
+      and load files into program
 */
 void setImport(std::vector<Set>& cardSet)
 {
@@ -261,48 +264,44 @@ void setImport(std::vector<Set>& cardSet)
 	system("cls");
 }
 /*
-=================================================================
-FUNCTION.   : printSetHash
-PARAMETERS  : vector<Set>&
-RETURN TYPE : VOID
-DESCRIPTION : prints the entire Set hashTable with bucket links
-=================================================================
+          ___
+ _  _ _|_  |  ._ _|_  _  ._ _  _   _ _|_ o  _  ._
+_> (/_ |_ _|_ | | |_ (/_ | _> (/_ (_  |_ | (_) | |
+
+      DESCRIPTION : prints the entire Set hashTable with bucket links
 */
 void setIntersection(std::vector<Set>& cardSet)
 {
 	return;
 }
 /*
-=================================================================
-FUNCTION.   : printSetHash
-PARAMETERS  : vector<Set>&
-RETURN TYPE : VOID
-DESCRIPTION : prints the entire Set hashTable with bucket links
-=================================================================
+           _      _   _
+ _  _ _|_ | \ o _|_ _|_ _  ._ _  ._   _  _
+_> (/_ |_ |_/ |  |   | (/_ | (/_ | | (_ (/_
+
+      DESCRIPTION : prints the entire Set hashTable with bucket links
 */
 void setDifference(std::vector<Set>& cardSet)
 {
 	return;
 }
 /*
-=================================================================
-FUNCTION.   : printSetHash
-PARAMETERS  : vector<Set>&
-RETURN TYPE : VOID
-DESCRIPTION : prints the entire Set hashTable with bucket links
-=================================================================
+                     _
+ _  _   _. ._ _ |_  /   _. ._ _|  _
+_> (/_ (_| | (_ | | \_ (_| | (_| _>
+
+      DESCRIPTION : prints the entire Set hashTable with bucket links
 */
 void searchCards(std::vector<Set>& cardSet)
 {
 	return;
 }
 /*
-=================================================================
-FUNCTION.   : printSetHash
-PARAMETERS  : vector<Set>&
-RETURN TYPE : VOID
-DESCRIPTION : prints the entire Set hashTable with bucket links
-=================================================================
+                 __
+._  ._ o ._ _|_ (_   _ _|_ |_|  _.  _ |_
+|_) |  | | | |_ __) (/_ |_ | | (_| _> | |
+|
+      DESCRIPTION : prints the entire Set hashTable with bucket links
 */
 void printSetHash(std::vector<Set>& cardSet)
 {
@@ -340,12 +339,11 @@ void printSetHash(std::vector<Set>& cardSet)
 	return;
 }
 /*
-=================================================================
-FUNCTION.   : printSetList
-PARAMETERS  : vector<Set>&
-RETURN TYPE : VOID
-DESCRIPTION : prints user-selected set as a list of cards
-=================================================================
+                 __
+._  ._ o ._ _|_ (_   _ _|_ |  o  _ _|_
+|_) |  | | | |_ __) (/_ |_ |_ | _>  |_
+|
+      DESCRIPTION : prints user-selected set as a list of cards
 */
 void printSetList(std::vector<Set>& cardSet)
 {
@@ -409,12 +407,11 @@ void printSetList(std::vector<Set>& cardSet)
 	} while (userInput != '\x1b');
 }
 /*
-=================================================================
-FUNCTION.   : outputSet
-PARAMETERS  : vector<String>&
-RETURN TYPE : VOID
-DESCRIPTION : creates file and outputs set to that file as a list
-=================================================================
+                       __
+ _     _|_ ._     _|_ (_   _ _|_
+(_) |_| |_ |_) |_| |_ __) (/_ |_
+           |
+      DESCRIPTION : creates file and outputs set to that file as a list
 */
 void outputSet(std::vector<Set>& cardSet)
 {
@@ -459,12 +456,10 @@ void outputSet(std::vector<Set>& cardSet)
 	return;
 }
 /*
-=================================================================
-FUNCTION.   : loadArtwork
-PARAMETERS  : std::string
-RETURN TYPE : VOID
-DESCRIPTION : opens graphic files and outputs to console
-=================================================================
+|  _   _.  _|  /\  ._ _|_       _  ._ |
+| (_) (_| (_| /--\ |   |_ \/\/ (_) |  |<
+
+      DESCRIPTION : opens graphic files and outputs to console
 */
 void loadArtwork(std::string artFileName)
 {
